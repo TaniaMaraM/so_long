@@ -28,8 +28,8 @@ GNL   = $(GNL_DIR)/libgnl.a
 MLX_DIR = lib/MLX42
 MLX_BUILD = $(MLX_DIR)/build
 MLX_INC = -I$(MLX_DIR)/include
-# MLX_LIB = -L$(MLX_BUILD) -lmlx42 -L/opt/homebrew/opt/glfw/lib -lglfw -ldl -lm
-MLX_LIB = -L$(MLX_BUILD) -lmlx42 -ldl -lglfw -lm 
+MLX_LIB = -L$(MLX_BUILD) -lmlx42 -L/opt/homebrew/opt/glfw/lib -lglfw -ldl -lm
+# MLX_LIB = -L$(MLX_BUILD) -lmlx42 -ldl -lglfw -lm 
 MLX_LIBFILE = $(MLX_BUILD)/libmlx42.a
 
 # Include paths
@@ -43,6 +43,7 @@ SRCS = \
 	src/main.c \
 	src/map_parser.c \
 	src/map_utils.c \
+	src/map_validator.c \
 	# src/init_game.c \
 	# src/render_map.c \
 	# src/move.c \

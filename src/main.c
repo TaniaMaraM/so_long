@@ -6,11 +6,11 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 14:36:05 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 12:38:50 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/29 18:00:55 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 // int	main(int argc, char **argv)
 // {
@@ -32,21 +32,20 @@
 
 #include "so_long.h"
 
-int main(int argc, char **argv)
+#include "so_long.h"
+
+int	main(int argc, char **argv)
 {
 	char	**map;
 
 	if (argc != 2)
 		exit_with_error("Usage: ./so_long map.ber");
-
 	if (!has_ber_extension(argv[1]))
 		exit_with_error("Invalid file extension. Must be .ber");
 
 	map = read_map_file(argv[1]);
-	print_map(map); // debug: imprime linha por linha
-
-	// Aqui depois vamos liberar a memória
-	free_map(map); // (implementaremos depois)
-
+	validate_map(map);       // ← AQUI VALIDAMOS TUDO
+	print_map(map);          // ← Opcional: debug
+	free_map(map);           // ← Sempre limpa a memória antes de sair
 	return (0);
 }
