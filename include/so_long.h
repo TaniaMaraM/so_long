@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 11:46:57 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 17:59:52 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/29 19:20:01 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,10 @@ void	validate_dimensions(char **map);
 void	validate_characters(char **map);
 void	validate_elements(char **map);
 void	validate_walls(char **map);
-
-
+char	**duplicate_map(char **map);
+void	find_player(char **map, int *x, int *y);
+void	flood_fill(char **map, int y, int x);
+void	validate_path(char **map);
 
 
 

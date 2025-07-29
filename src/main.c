@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 14:36:05 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 18:00:55 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/29 19:28:19 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@
 
 #include "so_long.h"
 
-#include "so_long.h"
-
 int	main(int argc, char **argv)
 {
 	char	**map;
@@ -44,8 +42,9 @@ int	main(int argc, char **argv)
 		exit_with_error("Invalid file extension. Must be .ber");
 
 	map = read_map_file(argv[1]);
-	validate_map(map);       // ← AQUI VALIDAMOS TUDO
-	print_map(map);          // ← Opcional: debug
+	validate_map(map);       // Verifica dimensões, bordas, elementos
+	validate_path(map);      // Garante que todos os 'C' e 'E' são acessíveis
+	// print_map(map);       // ← Opcional: debug visual do mapa
 	free_map(map);           // ← Sempre limpa a memória antes de sair
 	return (0);
 }
