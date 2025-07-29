@@ -6,12 +6,12 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:40 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 12:35:38 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/29 17:47:48 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 void exit_with_error(char *msg)
 {

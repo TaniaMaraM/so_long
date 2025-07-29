@@ -6,11 +6,20 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 11:27:08 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 12:25:57 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/29 17:57:14 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
+
+//centraliza todas as validações obrigatórias do subject
+void	validate_map(char **map)
+{
+	validate_dimensions(map);
+	validate_characters(map);
+	validate_elements(map);
+	validate_walls(map);
+}
 
 bool	has_ber_extension(char *filename)
 {
@@ -41,8 +50,6 @@ char **read_map_file(char *file_path)
 	{
 		temp = full_map;
 		full_map = ft_strjoin(full_map, line);
-		ft_printf("DEBUG: linha lida: %s", line);
-		ft_printf("DEBUG: full_map parcial: %s\n", full_map);
 		if (temp)
 			free(temp);
 		free(line);

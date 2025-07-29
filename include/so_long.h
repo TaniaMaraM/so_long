@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 11:46:57 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 12:36:37 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/29 17:59:52 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,28 +47,51 @@ typedef struct s_game
 	char		**map; // matriz de chars com os dados do mapa
 	int			width; // largura do mapa
 	int			height; // altura do mapa
-	// t_pos		player; // posição atual do player
-	// int			collectibles; // total de "C" no mapa
-	// int			collected; // quantos já pegou
-	// int			moves; // número de movimentos
-	// t_img		sprites; // imagens carregadas
+	t_pos		player; // posição atual do player
+	int			collectibles; // total de "C" no mapa
+	int			collected; // quantos já pegou
+	int			moves; // número de movimentos
+	t_img		sprites; // imagens carregadas
 }	t_game; //estrutura do jogo
 
-// Function Prototypes
-void	ft_init_game(t_game *game, char *file);
-void	ft_error_exit(char *msg, t_game *game);
-void	ft_render_map(t_game *game);
-void	ft_move_player(t_game *game, int dx, int dy);
-int		ft_valid_map(char **map);
-void	ft_free_map(char **map);
+// // Function Prototypes
+// void	ft_init_game(t_game *game, char *file);
+// void	ft_error_exit(char *msg, t_game *game);
+// void	ft_render_map(t_game *game);
+// void	ft_move_player(t_game *game, int dx, int dy);
+// int ft_valid_map(char **map);
+// void	ft_free_map(char **map);
 
 
-
+//maps
 bool	has_ber_extension(char *filename);
 void	exit_with_error(char *msg);
 char	**read_map_file(char *file_path);
 void	print_map(char **map); //para debug
 void	free_map(char **map);
+void	validate_map(char **map);
+void	validate_dimensions(char **map);
+void	validate_characters(char **map);
+void	validate_elements(char **map);
+void	validate_walls(char **map);
+
+
+
 
 
 #endif
+
+
+/* 
+ Essa struct escala perfeitamente pro projeto:
+	•	Você pode adicionar:
+	•	t_pos *enemies;
+	•	int enemy_count;
+	•	mlx_image_t *move_counter_text;
+…sem quebrar nada.
+	•	Você pode até fazer t_map separado, mas não é necessário. 
+	
+	uma struct guarda a posição, outra guarda imagens, e a t_game centraliza o estado do jogo. 
+	Assim mantenho meu código limpo, modular e fácil de expandir.”
+	
+	*/
