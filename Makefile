@@ -44,6 +44,7 @@ SRCS = \
 	src/map_parser.c \
 	src/map_utils.c \
 	src/map_validator.c \
+	src/map_path.c \
 	# src/init_game.c \
 	# src/render_map.c \
 	# src/move.c \
