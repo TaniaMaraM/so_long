@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 14:36:05 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 13:54:02 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/29 12:38:50 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 	print_map(map); // debug: imprime linha por linha
 
 	// Aqui depois vamos liberar a memória
-	// free_map(map); // (implementaremos depois)
+	free_map(map); // (implementaremos depois)
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 11:46:57 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 13:55:22 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/29 12:36:37 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,12 @@ int		ft_valid_map(char **map);
 void	ft_free_map(char **map);
 
 
+
 bool	has_ber_extension(char *filename);
 void	exit_with_error(char *msg);
 char	**read_map_file(char *file_path);
 void	print_map(char **map); //para debug
+void	free_map(char **map);
 
 
 #endif
