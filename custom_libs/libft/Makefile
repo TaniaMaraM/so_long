@@ -6,7 +6,7 @@
 #    By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:42:06 by tmarcos           #+#    #+#              #
-#    Updated: 2025/04/15 18:17:07 by tmarcos          ###   ########.fr        #
+#    Updated: 2025/07/29 11:50:39 by tmarcos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ SRCS 		= ft_isalpha.c 		\
 			ft_lstclear.c			\
 			ft_lstiter.c			\
 			ft_lstmap.c				\
+			ft_strcmp.c				\
 			ft_printf/ft_printf.c        \
        		ft_printf/ft_print_ch_str.c  \
        		ft_printf/ft_print_iuptr.c	 \
