@@ -6,17 +6,17 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 11:27:08 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 17:57:14 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/31 11:22:05 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
 //centraliza todas as validações obrigatórias do subject
-void	validate_map(char **map)
+void	validate_map(char **map, t_game *game)
 {
 	validate_dimensions(map);
-	validate_characters(map);
+	validate_characters(map, game);
 	validate_elements(map);
 	validate_walls(map);
 }

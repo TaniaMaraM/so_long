@@ -6,11 +6,56 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 14:36:05 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 19:28:19 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/31 17:50:10 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+int	main(int argc, char **argv)
+{
+	t_game	game;
+	char	**map;
+
+	if (argc != 2)
+		exit_with_error("Usage: ./so_long map.ber");
+	if (!has_ber_extension(argv[1]))
+		exit_with_error("Invalid file extension. Must be .ber");
+
+	map = read_map_file(argv[1]);
+	validate_map(map, &game);
+	init_game(&game, map);
+	init_mlx(&game);
+	load_sprites(&game);
+	render_map(&game);
+	set_hooks(&game);
+	mlx_loop(game.mlx);
+
+	// cleanup
+	free_map(game.map);
+	return (0);
+}
+
+//deixar esses cmts nao mexer
+
+//para testar mapas/validator/path
+// int	main(int argc, char **argv)
+// {
+// 	char	**map;
+
+// 	if (argc != 2)
+// 		exit_with_error("Usage: ./so_long map.ber");
+// 	if (!has_ber_extension(argv[1]))
+// 		exit_with_error("Invalid file extension. Must be .ber");
+// 	t_game game;
+// 	ft_init_game(&game, argv[1]);
+// 	map = read_map_file(argv[1]);
+// 	validate_map(map);       // Verifica dimensões, bordas, elementos
+// 	validate_path(map);      // Garante que todos os 'C' e 'E' são acessíveis
+// 	// print_map(map);       // ← Opcional: debug visual do mapa
+// 	free_map(map);           // ← Sempre limpa a memória antes de sair
+// 	return (0);
+// }
 
 // int	main(int argc, char **argv)
 // {
@@ -28,23 +73,3 @@
 // 	ft_free_map(game.map);             // libera memória do mapa
 // 	return (0);
 // }
-
-
-#include "so_long.h"
-
-int	main(int argc, char **argv)
-{
-	char	**map;
-
-	if (argc != 2)
-		exit_with_error("Usage: ./so_long map.ber");
-	if (!has_ber_extension(argv[1]))
-		exit_with_error("Invalid file extension. Must be .ber");
-
-	map = read_map_file(argv[1]);
-	validate_map(map);       // Verifica dimensões, bordas, elementos
-	validate_path(map);      // Garante que todos os 'C' e 'E' são acessíveis
-	// print_map(map);       // ← Opcional: debug visual do mapa
-	free_map(map);           // ← Sempre limpa a memória antes de sair
-	return (0);
-}

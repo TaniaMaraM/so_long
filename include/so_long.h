@@ -1,99 +1,78 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/25 11:46:57 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 19:20:01 by tmarcos          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <stdio.h> //para teste
+# include <stdbool.h>
+# include <stdio.h> // para debug
 # include "../custom_libs/libft/libft.h"
 # include "../custom_libs/get_next_line/get_next_line.h"
-
-
-#include <MLX42/MLX42.h>
+# include "../lib/minilibx/mlx.h"
 
 # define TILE_SIZE 64
+# define MAX_ENEMIES 10
 
 typedef struct s_pos
 {
 	int	x;
 	int	y;
-}	t_pos; //Guarda uma posição x e y, útil pra player, collectibles, etc.
+}	t_pos;
 
 typedef struct s_img
 {
-	mlx_image_t	*player;
-	mlx_image_t	*wall;
-	mlx_image_t	*floor;
-	mlx_image_t	*collectible;
-	mlx_image_t	*exit;
-}	t_img; //Guarda todos os sprites carregados.
+	void	*player;
+	void	*wall;
+	void	*floor;
+	void	*collectible;
+	void	*exit;
+	void	*enemy;
+	void	*move_counter;
+}	t_img;
 
 typedef struct s_game
 {
-	mlx_t		*mlx; // contexto da MLX
-	// mlx_image_t	**map_imgs;  // opcional: para gerenciar imagens
-	char		**map; // matriz de chars com os dados do mapa
-	int			width; // largura do mapa
-	int			height; // altura do mapa
-	t_pos		player; // posição atual do player
-	int			collectibles; // total de "C" no mapa
-	int			collected; // quantos já pegou
-	int			moves; // número de movimentos
-	t_img		sprites; // imagens carregadas
-}	t_game; //estrutura do jogo
+	void	*mlx;
+	void	*win;
+	char	**map;
+	int		width;
+	int		height;
+	t_pos	player;
+	int		collectibles;
+	int		collected;
+	int		moves;
+	t_img	sprites;
+	t_pos	enemies[MAX_ENEMIES];
+	int		num_enemies;
+}	t_game;
 
-// // Function Prototypes
-// void	ft_init_game(t_game *game, char *file);
-// void	ft_error_exit(char *msg, t_game *game);
-// void	ft_render_map(t_game *game);
-// void	ft_move_player(t_game *game, int dx, int dy);
-// int ft_valid_map(char **map);
-// void	ft_free_map(char **map);
-
-
-//maps
+// maps
 bool	has_ber_extension(char *filename);
 void	exit_with_error(char *msg);
 char	**read_map_file(char *file_path);
-void	print_map(char **map); //para debug
+void	print_map(char **map); // debug
 void	free_map(char **map);
-void	validate_map(char **map);
+void	validate_map(char **map, t_game *game);
 void	validate_dimensions(char **map);
-void	validate_characters(char **map);
+void	validate_characters(char **map, t_game *game);
 void	validate_elements(char **map);
 void	validate_walls(char **map);
 char	**duplicate_map(char **map);
 void	find_player(char **map, int *x, int *y);
 void	flood_fill(char **map, int y, int x);
 void	validate_path(char **map);
-
+int		count_chars(char **map, char c);
+// game
+void	init_game(t_game *game, char **map);
+void	extract_map_data(t_game *game);
+void	init_mlx(t_game *game);
+void	load_tile(t_game *game, void **img, char *path);
+void	load_sprites(t_game *game);
+void	render_map(t_game *game);
+int		handle_input(int keycode, t_game *game);
+void	set_hooks(t_game *game);
+int		exit_hook(void *param);
+void	exit_game(t_game *game);
 
 
 #endif
-
-
-/* 
- Essa struct escala perfeitamente pro projeto:
-	•	Você pode adicionar:
-	•	t_pos *enemies;
-	•	int enemy_count;
-	•	mlx_image_t *move_counter_text;
-…sem quebrar nada.
-	•	Você pode até fazer t_map separado, mas não é necessário. 
-	
-	uma struct guarda a posição, outra guarda imagens, e a t_game centraliza o estado do jogo. 
-	Assim mantenho meu código limpo, modular e fácil de expandir.”
-	
-	*/
