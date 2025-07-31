@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:30 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 18:08:15 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/31 14:45:38 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	validate_dimensions(char **map)
 		i++;
 	}
 }
-//garante que o mapa só contém caracteres válidos
-void	validate_characters(char **map)
+//garante que o mapa só contém caracteres válidos e armazena inimigos
+void	validate_characters(char **map, t_game *game)
 {
 	int	i = 0;
 	int	j;
@@ -41,8 +41,20 @@ void	validate_characters(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] != '0' && map[i][j] != '1' &&
-				map[i][j] != 'P' && map[i][j] != 'C' && map[i][j] != 'E')
+				map[i][j] != 'P' && map[i][j] != 'C' &&
+				map[i][j] != 'E' && map[i][j] != 'D')
 				exit_with_error("Map contains invalid characters");
+			if (map[i][j] == 'D')
+			{
+				if (game->num_enemies < MAX_ENEMIES)
+				{
+					game->enemies[game->num_enemies].x = j;
+					game->enemies[game->num_enemies].y = i;
+					game->num_enemies++;
+				}
+				else
+					exit_with_error("Too many enemies on map");
+			}
 			j++;
 		}
 		i++;
