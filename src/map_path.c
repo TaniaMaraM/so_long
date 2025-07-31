@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:36:50 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 19:19:21 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/31 20:49:08 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,35 @@ void	find_player(char **map, int *x, int *y)
 	}
 }
 
+/**
+ * @brief Scans the map and stores the positions of static enemies marked with 'X'.
+ *
+ * The enemies are stored in the game->enemies array (max: MAX_ENEMIES),
+ * and the total number is tracked in game->num_enemies.
+ */
+
+// void	store_enemies(char **map, t_game *game)
+// {
+// 	int	x, y;
+
+// 	game->num_enemies = 0;
+// 	y = 0;
+// 	while (map[y])
+// 	{
+// 		x = 0;
+// 		while (map[y][x])
+// 		{
+// 			if (map[y][x] == 'X' && game->num_enemies < MAX_ENEMIES)
+// 			{
+// 				game->enemies[game->num_enemies].x = x;
+// 				game->enemies[game->num_enemies].y = y;
+// 				game->num_enemies++;
+// 			}
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// }
 /**
  * flood_fill - Recursively explores reachable tiles from a starting position.
  *

@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 21:30:01 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/31 15:29:48 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/31 22:36:14 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,13 @@ void	extract_map_data(t_game *game)
 				game->player.x = x;
 				game->player.y = y;
 			}
+			else if (game->map[y][x] == 'X')
+				store_enemy(game, x, y);
 			x++;
 		}
 		y++;
 	}
+	if (x > game->width) //talvez de pra remover
 	game->width = x;
 }
 /* 
@@ -74,5 +77,6 @@ Para cada linha do mapa:
     para cada caractere da linha:
         se for 'C' → incrementar collectibles
         se for 'P' → salvar posição do player
+        se for 'X' → registrar inimigo com store_enemy
 salvar largura como número de colunas da última linha
  */

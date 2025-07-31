@@ -6,60 +6,11 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:30 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/31 14:45:38 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/31 20:45:30 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-//garante que o mapa é retangular
-void	validate_dimensions(char **map)
-{
-	int i;
-	int width;
-
-	if (!map || !map[0])
-		exit_with_error("Map is empty");
-	width = ft_strlen(map[0]);
-	i = 1;
-	while (map[i])
-	{
-		if ((int)ft_strlen(map[i]) != width)
-			exit_with_error("Map is not rectangular");
-		i++;
-	}
-}
-//garante que o mapa só contém caracteres válidos e armazena inimigos
-void	validate_characters(char **map, t_game *game)
-{
-	int	i = 0;
-	int	j;
-
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] != '0' && map[i][j] != '1' &&
-				map[i][j] != 'P' && map[i][j] != 'C' &&
-				map[i][j] != 'E' && map[i][j] != 'D')
-				exit_with_error("Map contains invalid characters");
-			if (map[i][j] == 'D')
-			{
-				if (game->num_enemies < MAX_ENEMIES)
-				{
-					game->enemies[game->num_enemies].x = j;
-					game->enemies[game->num_enemies].y = i;
-					game->num_enemies++;
-				}
-				else
-					exit_with_error("Too many enemies on map");
-			}
-			j++;
-		}
-		i++;
-	}
-}
 
 // Percorre o mapa e conta quantos 'P', 'E' e 'C' existem
 static void count_elements(char **map, int *p, int *e, int *c)
@@ -79,6 +30,43 @@ static void count_elements(char **map, int *p, int *e, int *c)
 				(*e)++;
 			else if (map[i][j] == 'C')
 				(*c)++;
+			j++;
+		}
+		i++;
+	}
+}
+
+// Adiciona um inimigo à struct game se o limite não foi atingido
+void	store_enemy(t_game *game, int x, int y)
+{
+	if (game->num_enemies < MAX_ENEMIES)
+	{
+		game->enemies[game->num_enemies].x = x;
+		game->enemies[game->num_enemies].y = y;
+		game->num_enemies++;
+	}
+	else
+		exit_with_error("Too many enemies on map");
+}
+//garante que o mapa só contém caracteres válidos e armazena inimigos
+void	validate_characters(char **map, t_game *game)
+{
+	int	i;
+	int	j;
+	
+	game->num_enemies = 0;
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] != '0' && map[i][j] != '1' &&
+				map[i][j] != 'P' && map[i][j] != 'C' &&
+				map[i][j] != 'E' && map[i][j] != 'X')
+				exit_with_error("Map contains invalid characters");
+			if (map[i][j] == 'X')
+				store_enemy(game, j, i);
 			j++;
 		}
 		i++;

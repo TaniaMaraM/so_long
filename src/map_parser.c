@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 11:27:08 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/31 11:22:05 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/31 20:40:53 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,23 @@ void	validate_map(char **map, t_game *game)
 	validate_elements(map);
 	validate_walls(map);
 }
+//garante que o mapa é retangular
+void	validate_dimensions(char **map)
+{
+	int i;
+	int width;
 
+	if (!map || !map[0])
+		exit_with_error("Map is empty");
+	width = ft_strlen(map[0]);
+	i = 1;
+	while (map[i])
+	{
+		if ((int)ft_strlen(map[i]) != width)
+			exit_with_error("Map is not rectangular");
+		i++;
+	}
+}
 bool	has_ber_extension(char *filename)
 {
 	int len;
@@ -63,17 +79,3 @@ char **read_map_file(char *file_path)
 	return (map);
 }
 
-// DEBUG Função para imprimir o mapa no terminal
-void print_map(char **map)
-{
-	int i = 0;
-
-	if (!map)
-		ft_printf("DEBUG: map is NULL\n");
-
-	while (map[i])
-	{
-		ft_printf("%s\n", map[i]);
-		i++;
-	}
-}
