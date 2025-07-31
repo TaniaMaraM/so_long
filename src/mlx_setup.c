@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 15:32:02 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/31 15:32:05 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/31 19:49:17 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,6 @@ void	init_mlx(t_game *game)
 	game->win = mlx_new_window(game->mlx, win_width, win_height, "so_long");
 	if (!game->win)
 		exit_with_error("Failed to create game window.");
+	mlx_key_hook(game->win, handle_input, game);
+	mlx_hook(game->win, 17, 0, exit_hook, game);
 }

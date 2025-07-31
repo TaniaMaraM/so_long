@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 14:49:16 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/31 15:33:45 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/31 22:08:46 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ void	load_sprites(t_game *game)
 	load_tile(game, &game->sprites.player, "assets/player.xpm");
 	load_tile(game, &game->sprites.collectible, "assets/collectible.xpm");
 	load_tile(game, &game->sprites.exit, "assets/exit.xpm");
+	load_tile(game, &game->sprites.enemy, "assets/enemy.xpm");
 }
-

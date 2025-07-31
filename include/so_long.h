@@ -11,7 +11,23 @@
 # include "../lib/minilibx/mlx.h"
 
 # define TILE_SIZE 64
-# define MAX_ENEMIES 10
+# define MAX_ENEMIES 5
+
+# ifdef __APPLE__
+// macOS keycodes
+#  define KEY_W 13
+#  define KEY_A 0
+#  define KEY_S 1
+#  define KEY_D 2
+#  define KEY_ESC 53
+# else
+// Linux keycodes (ASCII-based)
+#  define KEY_W 'w'
+#  define KEY_A 'a'
+#  define KEY_S 's'
+#  define KEY_D 'd'
+#  define KEY_ESC 65307
+# endif
 
 typedef struct s_pos
 {
@@ -70,9 +86,12 @@ void	load_tile(t_game *game, void **img, char *path);
 void	load_sprites(t_game *game);
 void	render_map(t_game *game);
 int		handle_input(int keycode, t_game *game);
-void	set_hooks(t_game *game);
 int		exit_hook(void *param);
 void	exit_game(t_game *game);
+void	draw_hud(t_game *game);
+// void	store_enemies(char **map, t_game *game);
+void	store_enemy(t_game *game, int x, int y);
+
 
 
 #endif

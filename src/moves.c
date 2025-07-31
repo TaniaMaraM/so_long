@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 14:50:27 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/31 18:00:16 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/07/31 22:27:59 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,41 @@
  * @brief Handles player movement and input via keyboard.
  */
 
+static bool	check_enemy_collision(t_game *game, int new_x, int new_y)
+{
+	int	i = 0;
+
+	while (i < game->num_enemies)
+	{
+		if (game->enemies[i].x == new_x && game->enemies[i].y == new_y)
+		{
+			ft_printf("💀 You lost! Caught by an enemy!\n");
+			exit_game(game);
+			return (true);
+		}
+		i++;
+	}
+	return (false);
+}
+
 static void	move_player(t_game *game, int dx, int dy)
 {
-	int	new_x = game->player.x + dx;
-	int	new_y = game->player.y + dy;
+	int		new_x = game->player.x + dx;
+	int		new_y = game->player.y + dy;
 	char	next_tile = game->map[new_y][new_x];
 
 	if (next_tile == '1')
-		return; // can't walk into walls
+		return;
+	if (check_enemy_collision(game, new_x, new_y))
+		return;
 	if (next_tile == 'C')
 		game->collected++;
-	if (next_tile == 'E' && game->collected < game->collectibles)
-		return; // can't exit yet
-
+	if (next_tile == 'E' && game->collected == game->collectibles)
+	{
+		ft_printf("🎉 You win in %d moves!\n", game->moves + 1);
+		exit_game(game);
+		return;
+	}
 	game->map[game->player.y][game->player.x] = '0';
 	game->map[new_y][new_x] = 'P';
 	game->player.x = new_x;
@@ -37,11 +59,38 @@ static void	move_player(t_game *game, int dx, int dy)
 	game->moves++;
 	ft_printf("Moves: %d\n", game->moves);
 	render_map(game);
+	draw_hud(game);
 }
 
 int	handle_input(int keycode, t_game *game)
 {
-	if (keycode == 65307) // ESC
+	if (keycode == KEY_ESC)
+		exit_game(game);
+	else if (keycode == KEY_W)
+		move_player(game, 0, -1);
+	else if (keycode == KEY_S)
+		move_player(game, 0, 1);
+	else if (keycode == KEY_A)
+		move_player(game, -1, 0);
+	else if (keycode == KEY_D)
+		move_player(game, 1, 0);
+	return (0);
+}
+
+int	exit_hook(void *param)
+{
+	exit_game((t_game *)param);
+	return (0);
+}
+
+
+/* 
+COM OS DEFINE EH PRA FUNCIONAR NO LINUX
+pra funcionar no lINUX - testar na escola
+int	handle_input(int keycode, t_game *game)
+{
+	ft_printf("KEY PRESSED: %d\n", keycode); //debug
+	if (keycode == 65307 || keycode == 53) // ESC (Linux or Mac)
 		exit_game(game);
 	else if (keycode == 'w' || keycode == 119)
 		move_player(game, 0, -1);
@@ -52,16 +101,4 @@ int	handle_input(int keycode, t_game *game)
 	else if (keycode == 'd' || keycode == 100)
 		move_player(game, 1, 0);
 	return (0);
-}
-
-void	set_hooks(t_game *game)
-{
-	mlx_key_hook(game->win, handle_input, game);
-	mlx_hook(game->win, 17, 0, exit_hook, game);
-}
-
-int	exit_hook(void *param)
-{
-	exit_game((t_game *)param);
-	return (0);
-}
+} */
