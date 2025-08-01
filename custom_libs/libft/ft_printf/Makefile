@@ -6,7 +6,7 @@
 #    By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/22 16:40:49 by tmarcos           #+#    #+#              #
-#    Updated: 2025/01/16 15:35:38 by tmarcos          ###   ########.fr        #
+#    Updated: 2025/08/01 14:24:59 by tmarcos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,24 +31,26 @@ SRCS 		= ft_printf.c			\
 				ft_print_iuptr.c				\
 
 
-OBJS 		= $(SRCS:.c=.o)
+OBJ_DIR ?= obj
+OBJS            = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 all:		$(NAME)
 
-$(NAME): 	$(OBJS)
-			@ar -rcs $(NAME) $(OBJS)
-			@echo "$(GREY)libftprintf: $(GREEN)$(NAME) was created$(RESET)"
+$(NAME): $(OBJS)
+	@ar -rcs $(NAME) $(OBJS)
+	@echo "$(GREY)libftprintf: $(GREEN)$(NAME) was created$(RESET)"
 
-%.o: %.c ft_printf.h
-			@$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)/%.o: %.c ft_printf.h
+	@mkdir -p $(dir $@)
+	@$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
-			@$(REMOVE) $(OBJS)
-			@echo "$(GREY)libftprintf: object files were deleted$(RESET)"
+	@rm -rf $(OBJ_DIR)
+	@echo "$(GREY)libftprintf: object files were deleted$(RESET)"
 
 fclean:		clean
-			@$(REMOVE) $(NAME)
-			@echo "$(GREY)libftprintf: $(NAME) was deleted$(RESET)"
+	@$(REMOVE) $(NAME)
+	@echo "$(GREY)libftprintf: $(NAME) was deleted$(RESET)"
 
 re:			fclean all
 
