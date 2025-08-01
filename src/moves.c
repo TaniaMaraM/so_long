@@ -40,18 +40,20 @@ static void	move_player(t_game *game, int dx, int dy)
 	int		new_y = game->player.y + dy;
 	char	next_tile = game->map[new_y][new_x];
 
-	if (next_tile == '1')
-		return;
-	if (check_enemy_collision(game, new_x, new_y))
-		return;
-	if (next_tile == 'C')
-		game->collected++;
-	if (next_tile == 'E' && game->collected == game->collectibles)
-	{
-		ft_printf("🎉 You win in %d moves!\n", game->moves + 1);
-		exit_game(game);
-		return;
-	}
+        if (next_tile == '1')
+                return;
+        if (check_enemy_collision(game, new_x, new_y))
+                return;
+        if (next_tile == 'E' && game->collected < game->collectibles)
+                return;
+        if (next_tile == 'C')
+                game->collected++;
+        if (next_tile == 'E' && game->collected == game->collectibles)
+        {
+                ft_printf("🎉 You win in %d moves!\n", game->moves + 1);
+                exit_game(game);
+                return;
+        }
 	game->map[game->player.y][game->player.x] = '0';
 	game->map[new_y][new_x] = 'P';
 	game->player.x = new_x;
