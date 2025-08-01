@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 14:49:14 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/31 22:19:53 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 14:11:45 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 //(assim como no Paint: primeiro fundo, depois objetos por cima)
 static void	render_tile(t_game *game, char tile, int x, int y)
 {
-	// Draw base floor tile
 	mlx_put_image_to_window(game->mlx, game->win,
 		game->sprites.floor, x * TILE_SIZE, y * TILE_SIZE);
 	if (tile == '1')
@@ -73,6 +72,6 @@ void	draw_hud(t_game *game)
 {
 	char	buffer[32];
 
-	sprintf(buffer, "Moves: %d", game->moves);
+	ft_printf(buffer, "Moves: %d", game->moves);
 	mlx_string_put(game->mlx, game->win, 10, 20, 0xFFFFFF, buffer);
 }

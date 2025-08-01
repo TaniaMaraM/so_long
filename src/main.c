@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 14:36:05 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/31 19:22:05 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 12:38:16 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,3 @@ int	main(int argc, char **argv)
 	free_map(game.map);
 	return (0);
 }
-
-
-//deixar esses cmts nao mexer
-
-//para testar mapas/validator/path
-// int	main(int argc, char **argv)
-// {
-// 	char	**map;
-
-// 	if (argc != 2)
-// 		exit_with_error("Usage: ./so_long map.ber");
-// 	if (!has_ber_extension(argv[1]))
-// 		exit_with_error("Invalid file extension. Must be .ber");
-// 	t_game game;
-// 	ft_init_game(&game, argv[1]);
-// 	map = read_map_file(argv[1]);
-// 	validate_map(map);       // Verifica dimensões, bordas, elementos
-// 	validate_path(map);      // Garante que todos os 'C' e 'E' são acessíveis
-// 	// print_map(map);       // ← Opcional: debug visual do mapa
-// 	free_map(map);           // ← Sempre limpa a memória antes de sair
-// 	return (0);
-// }

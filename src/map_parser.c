@@ -6,13 +6,12 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 11:27:08 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/31 20:40:53 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 12:38:57 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-//centraliza todas as validações obrigatórias do subject
 void	validate_map(char **map, t_game *game)
 {
 	validate_dimensions(map);
@@ -20,7 +19,7 @@ void	validate_map(char **map, t_game *game)
 	validate_elements(map);
 	validate_walls(map);
 }
-//garante que o mapa é retangular
+
 void	validate_dimensions(char **map)
 {
 	int i;
@@ -37,6 +36,7 @@ void	validate_dimensions(char **map)
 		i++;
 	}
 }
+
 bool	has_ber_extension(char *filename)
 {
 	int len;
@@ -49,7 +49,6 @@ bool	has_ber_extension(char *filename)
 	return (false);
 }
 
-// Lê o conteúdo do arquivo de mapa e retorna como um char ** (matriz de strings)
 char **read_map_file(char *file_path)
 {
 	int		fd;

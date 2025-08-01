@@ -5,7 +5,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdbool.h>
-# include <stdio.h> // para debug
 # include "../custom_libs/libft/libft.h"
 # include "../custom_libs/get_next_line/get_next_line.h"
 # include "../lib/minilibx/mlx.h"
@@ -89,9 +88,6 @@ int		handle_input(int keycode, t_game *game);
 int		exit_hook(void *param);
 void	exit_game(t_game *game);
 void	draw_hud(t_game *game);
-// void	store_enemies(char **map, t_game *game);
 void	store_enemy(t_game *game, int x, int y);
-
-
 
 #endif
