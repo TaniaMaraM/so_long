@@ -6,14 +6,14 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:30 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/01 12:41:37 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 16:50:58 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
 // Percorre o mapa e conta quantos 'P', 'E' e 'C' existem
-static void count_elements(char **map, int *p, int *e, int *c)
+static void	count_elements(char **map, int *p, int *e, int *c)
 {
 	int	i;
 	int	j;
@@ -48,12 +48,13 @@ void	store_enemy(t_game *game, int x, int y)
 	else
 		exit_with_error("Too many enemies on map");
 }
+
 //garante que o mapa só contém caracteres válidos e armazena inimigos
 void	validate_characters(char **map, t_game *game)
 {
 	int	i;
 	int	j;
-	
+
 	game->num_enemies = 0;
 	i = 0;
 	while (map[i])
@@ -79,7 +80,7 @@ void	validate_elements(char **map)
 	int	player_count;
 	int	exit_count;
 	int	collectible_count;
-	
+
 	player_count = 0;
 	exit_count = 0;
 	collectible_count = 0;
@@ -103,7 +104,6 @@ void	validate_walls(char **map)
 	height = 0;
 	while (map[height])
 		height++;
-
 	i = 0;
 	while (i < width)
 	{

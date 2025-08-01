@@ -6,25 +6,26 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:40 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/01 12:40:59 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 17:44:36 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void exit_with_error(char *msg)
+void	exit_with_error(char *msg)
 {
-    ft_printf("Error\n");
-    ft_printf("%s\n", msg);
-    exit(EXIT_FAILURE);
+	ft_printf("Error\n");
+	ft_printf("%s\n", msg);
+	exit(EXIT_FAILURE);
 }
-void free_map(char **map)
+
+void	free_map(char **map)
 {
 	int	i;
-	
+
 	i = 0;
 	if (!map)
-		return;
+		return ;
 	while (map[i])
 	{
 		free(map[i]);

@@ -6,49 +6,49 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:36:50 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/01 14:07:26 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 17:46:26 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-/**
- * validate_path - Ensures all collectibles and exit are reachable from player.
- *
- * @map: The original, validated game map.
- *
- * This function duplicates the map, finds the player's position, runs
- * flood fill, and then checks if any 'C' or 'E' remain unvisited.
- * If any target is unreachable, it exits the program with an error.
- */
-void	validate_path(char **map)
+static void	check_reachable(char **map)
 {
-	char	**copy;
-	int		x, y;
-	int		i, j;
+	int	i;
+	int	j;
 
-	copy = duplicate_map(map);
-	if (!copy)
-		exit_with_error("Memory allocation failed during path validation");
-	find_player(copy, &x, &y);
-	flood_fill(copy, y, x);
 	i = 0;
-	while (copy[i])
+	while (map[i])
 	{
 		j = 0;
-		while (copy[i][j])
+		while (map[i][j])
 		{
-			if (copy[i][j] == 'C' || copy[i][j] == 'E')
+			if (map[i][j] == 'C' || map[i][j] == 'E')
 			{
-				free_map(copy);
+				free_map(map);
 				exit_with_error("Map has unreachable elements");
 			}
 			j++;
 		}
 		i++;
 	}
+}
+
+void	validate_path(char **map)
+{
+	char	**copy;
+	int		x;
+	int		y;
+
+	copy = duplicate_map(map);
+	if (!copy)
+		exit_with_error("Memory allocation failed during path validation");
+	find_player(copy, &x, &y);
+	flood_fill(copy, y, x);
+	check_reachable(copy);
 	free_map(copy);
 }
+
 /**
   duplicate_map - Creates a deep copy of the given map.
  
@@ -81,13 +81,13 @@ char	**duplicate_map(char **map)
 	while (i < height)
 	{
 		copy[i] = ft_strdup(map[i]);
-        if (!copy[i])
-			{
-				while (--i >= 0)
+		if (!copy[i])
+		{
+			while (--i >= 0)
 				free(copy[i]);
-					free(copy);
+			free(copy);
 			return (NULL);
-			}
+		}
 		i++;
 	}
 	copy[height] = NULL;
@@ -119,7 +119,7 @@ void	find_player(char **map, int *x, int *y)
 			{
 				*x = j;
 				*y = i;
-				return;
+				return ;
 			}
 			j++;
 		}
@@ -134,17 +134,22 @@ void	find_player(char **map, int *x, int *y)
  * @y: Current row index.
  * @x: Current column index.
  *
- * Marks all accessible tiles ('0', 'C', 'E') from the given position by
- * replacing them with 'V' to indicate visited.
+	// Marks all accessible tiles from current position
+	// using flood fill and replaces them with 'V'
+	// to indicate visited.
+
  */
 void	flood_fill(char **map, int y, int x)
 {
 	if (map[y][x] == '1' || map[y][x] == 'V')
-		return;
-	if (map[y][x] == '0' || map[y][x] == 'C' || map[y][x] == 'E' || map[y][x] == 'P')
+		return ;
+	if (map[y][x] == '0'
+		|| map[y][x] == 'C'
+		|| map[y][x] == 'E'
+		|| map[y][x] == 'P')
 		map[y][x] = 'V';
 	else
-		return;
+		return ;
 	flood_fill(map, y + 1, x); // down
 	flood_fill(map, y - 1, x); // up
 	flood_fill(map, y, x + 1); // right
