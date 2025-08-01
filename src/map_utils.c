@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:40 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/29 21:42:50 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 12:40:59 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 void exit_with_error(char *msg)
 {
     ft_printf("Error\n");
-    ft_printf("%s\n", msg);     // Exibe o erro com cabeçalho padrão
-    exit(EXIT_FAILURE);             // Finaliza o programa com código 1
+    ft_printf("%s\n", msg);
+    exit(EXIT_FAILURE);
 }
 void free_map(char **map)
 {
-	int i = 0;
-
+	int	i;
+	
+	i = 0;
 	if (!map)
 		return;
 	while (map[i])

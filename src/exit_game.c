@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:53:38 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/31 17:56:55 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 12:43:52 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 /**
  * @file exit_game.c
- * @brief Handles clean exit of the game when ESC is pressed or window is closed.
+ * @brief Handles clean exit of the game when ESC 
+ * is pressed or window is closed.
  */
 
 void	exit_game(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:30 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/31 20:45:30 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 12:41:37 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	validate_elements(char **map)
 	player_count = 0;
 	exit_count = 0;
 	collectible_count = 0;
-	//Chama a função auxiliar para preencher os contadores.
 	count_elements(map, &player_count, &exit_count, &collectible_count);
 	if (player_count != 1)
 		exit_with_error("Map must contain exactly one player");
@@ -105,7 +104,6 @@ void	validate_walls(char **map)
 	while (map[height])
 		height++;
 
-	// Verifica primeira e última linha
 	i = 0;
 	while (i < width)
 	{
@@ -113,7 +111,6 @@ void	validate_walls(char **map)
 			exit_with_error("Map is not enclosed by walls");
 		i++;
 	}
-	// Verifica colunas laterais
 	i = 0;
 	while (i < height)
 	{

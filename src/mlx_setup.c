@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 15:32:02 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/31 19:49:17 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 12:45:02 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
  * @file mlx_setup.c
  * @brief Initializes the MLX context and opens a new game window.
  *
- * This file sets up the MiniLibX instance and the game window using the map dimensions.
+ * This file sets up the MiniLibX instance 
+ * and the game window using the map dimensions.
  */
 
 void	init_mlx(t_game *game)

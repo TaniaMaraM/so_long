@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 21:30:01 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/31 22:36:14 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 12:44:45 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 /**
  * @file init_game.c
- * @brief Initializes the main game structure and extracts essential data from the map.
+ * @brief Initializes the main game structure 
+ * and extracts essential data from the map.
  * 
  * This file contains functions responsible for:
  * - setting default values for the t_game structure
@@ -39,7 +40,6 @@ void	init_game(t_game *game, char **map)
 	game->sprites.exit = NULL;
 	game->sprites.enemy = NULL;
 	game->sprites.move_counter = NULL;
-
 	extract_map_data(game);
 }
 
@@ -68,15 +68,6 @@ void	extract_map_data(t_game *game)
 		}
 		y++;
 	}
-	if (x > game->width) //talvez de pra remover
-	game->width = x;
+	if (x > game->width)
+		game->width = x;
 }
-/* 
-Para cada linha do mapa:
-    aumentar altura
-    para cada caractere da linha:
-        se for 'C' → incrementar collectibles
-        se for 'P' → salvar posição do player
-        se for 'X' → registrar inimigo com store_enemy
-salvar largura como número de colunas da última linha
- */
