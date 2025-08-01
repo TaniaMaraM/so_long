@@ -6,7 +6,7 @@
 #    By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:42:06 by tmarcos           #+#    #+#              #
-#    Updated: 2025/07/29 11:50:39 by tmarcos          ###   ########.fr        #
+#    Updated: 2025/08/01 14:21:31 by tmarcos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,8 @@ SRCS 		= ft_isalpha.c 		\
        		ft_printf/ft_print_ch_str.c  \
        		ft_printf/ft_print_iuptr.c	 \
 
-OBJS 		= $(SRCS:.c=.o)
+OBJ_DIR ?= obj
+OBJS            = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 all:		$(NAME)
 
@@ -85,11 +86,12 @@ bonus:		$(OBJS)
 			@ar -rcs $(NAME) $(OBJS) 
 			@echo "$(GREY)Libft: $(GREEN)$(NAME) was created with Bonus$(RESET)"
 
-%.o: %.c libft.h
+$(OBJ_DIR)/%.o: %.c libft.h
+			@mkdir -p $(dir $@)
 			@$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
-			@$(REMOVE) $(OBJS) $(BONUS_OBJS)
+			@rm -rf $(OBJ_DIR)
 			@echo "$(GREY)Libft: object files were deleted$(RESET)"
 
 fclean:		clean
