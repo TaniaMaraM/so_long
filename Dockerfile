@@ -13,4 +13,4 @@ COPY . .
 
 RUN make re
 
-CMD ["valgrind", "--leak-check=full", "--show-leak-kinds=all", "./so_long", "maps/valid.ber"]
+CMD ["valgrind", "--leak-check=full", "--show-leak-kinds=all", "./so_long", "maps/map_horizontal_valido.ber"]
