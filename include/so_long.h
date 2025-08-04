@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 17:55:45 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 14:46:49 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 16:26:13 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_game
 
 // maps
 bool	has_ber_extension(char *filename);
-void	exit_with_error(char *msg);
+void	exit_with_error(char *msg, t_game *game);
 char	**read_map_file(char *file_path);
 void	print_map(char **map); // debug
 void	free_map(char **map);

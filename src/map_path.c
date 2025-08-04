@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:36:50 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/01 17:46:26 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 15:55:15 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	check_reachable(char **map)
 			if (map[i][j] == 'C' || map[i][j] == 'E')
 			{
 				free_map(map);
-				exit_with_error("Map has unreachable elements");
+				exit_with_error("Map has unreachable elements", NULL);
 			}
 			j++;
 		}
@@ -42,7 +42,7 @@ void	validate_path(char **map)
 
 	copy = duplicate_map(map);
 	if (!copy)
-		exit_with_error("Memory allocation failed during path validation");
+		exit_with_error("Memory allocation failed during path validation", NULL);
 	find_player(copy, &x, &y);
 	flood_fill(copy, y, x);
 	check_reachable(copy);

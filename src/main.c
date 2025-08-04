@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 14:36:05 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 14:11:04 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 15:53:01 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 	if (argc != 2)
-		exit_with_error("Usage: ./so_long map.ber");
+		exit_with_error("Usage: ./so_long map.ber", NULL);
 	// Ensure the map file has the .ber extension.
 	if (!has_ber_extension(argv[1]))
-		exit_with_error("Invalid file extension. Must be .ber");
+		exit_with_error("Invalid file extension. Must be .ber", NULL);
 	// Run the full game logic using the provided map.
 	start_game(&game, argv[1]);
 	return (0);
@@ -61,9 +61,9 @@ int	main(int argc, char **argv)
 	char	**map;
 
 	if (argc != 2)
-		exit_with_error("Usage: ./so_long map.ber");
+		exit_with_error("Usage: ./so_long map.ber", NULL);
 	if (!has_ber_extension(argv[1]))
-		exit_with_error("Invalid file extension. Must be .ber");
+		exit_with_error("Invalid file extension. Must be .ber", NULL);
 	map = read_map_file(argv[1]);
 	validate_map(map, &game);
 	init_game(&game, map);

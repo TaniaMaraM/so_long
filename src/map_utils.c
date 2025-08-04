@@ -6,40 +6,22 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:40 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 14:46:30 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 16:25:58 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// void	exit_with_error(char *msg, t_game *game)
-// {
-// 	ft_printf("Error\n");
-// 	ft_printf("%s\n", msg);
-// 	if (game)
-// 		exit_game(game);
-// 	exit(EXIT_FAILURE);
-// }
-void	exit_with_error(char *msg)
+void	exit_with_error(char *msg, t_game *game)
 {
 	ft_printf("Error\n");
 	ft_printf("%s\n", msg);
-	exit(EXIT_FAILURE);
-}
-
-void	free_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	if (!map)
-		return ;
-	while (map[i])
+	if (game)
 	{
-		free(map[i]);
-		i++;
+		free_map(game->map);
+		exit_game(game);
 	}
-	free(map);
+	exit(EXIT_FAILURE);
 }
 
 /**

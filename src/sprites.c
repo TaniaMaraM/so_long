@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 14:49:16 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/01 16:46:45 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 15:58:13 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	load_tile(t_game *game, void **img, char *path)
 
 	*img = mlx_xpm_file_to_image(game->mlx, path, &width, &height);
 	if (!*img)
-		exit_with_error("Failed to load sprite.");
+		exit_with_error("Failed to load sprite.", game);
 }
 
 void	load_sprites(t_game *game)

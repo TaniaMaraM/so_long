@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:17:22 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/01 17:53:01 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 16:10:46 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ char	*ft_read_file(int fd, char *keep)
 		return (free(keep), NULL);
 	return (keep);
 }
-
 char	*get_next_line(int fd)
 {
 	static char	*keep;
@@ -104,6 +103,12 @@ char	*get_next_line(int fd)
 	if (!keep)
 		return (NULL);
 	line = ft_extract_line(keep);
+	if (!line)
+	{
+		free(keep);
+		keep = NULL;
+		return (NULL);
+	}
 	keep = ft_update_keep(keep);
 	return (line);
 }

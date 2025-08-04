@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:30 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/01 16:50:58 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 15:57:14 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	store_enemy(t_game *game, int x, int y)
 		game->num_enemies++;
 	}
 	else
-		exit_with_error("Too many enemies on map");
+		exit_with_error("Too many enemies on map", game);
 }
 
 //garante que o mapa só contém caracteres válidos e armazena inimigos
@@ -65,7 +65,7 @@ void	validate_characters(char **map, t_game *game)
 			if (map[i][j] != '0' && map[i][j] != '1' &&
 				map[i][j] != 'P' && map[i][j] != 'C' &&
 				map[i][j] != 'E' && map[i][j] != 'X')
-				exit_with_error("Map contains invalid characters");
+				exit_with_error("Map contains invalid characters", game);
 			if (map[i][j] == 'X')
 				store_enemy(game, j, i);
 			j++;
@@ -86,11 +86,11 @@ void	validate_elements(char **map)
 	collectible_count = 0;
 	count_elements(map, &player_count, &exit_count, &collectible_count);
 	if (player_count != 1)
-		exit_with_error("Map must contain exactly one player");
+		exit_with_error("Map must contain exactly one player", NULL);
 	if (exit_count != 1)
-		exit_with_error("Map must contain exactly one exit");
+		exit_with_error("Map must contain exactly one exit", NULL);
 	if (collectible_count < 1)
-		exit_with_error("Map must contain at least one collectible");
+		exit_with_error("Map must contain at least one collectible", NULL);
 }
 
 // Garante que o mapa está completamente cercado por paredes
@@ -108,14 +108,14 @@ void	validate_walls(char **map)
 	while (i < width)
 	{
 		if (map[0][i] != '1' || map[height - 1][i] != '1')
-			exit_with_error("Map is not enclosed by walls");
+			exit_with_error("Map is not enclosed by walls", NULL);
 		i++;
 	}
 	i = 0;
 	while (i < height)
 	{
 		if (map[i][0] != '1' || map[i][width - 1] != '1')
-			exit_with_error("Map is not enclosed by walls");
+			exit_with_error("Map is not enclosed by walls", NULL);
 		i++;
 	}
 }
