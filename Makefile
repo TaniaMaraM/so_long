@@ -53,7 +53,7 @@ SRCS = \
 	src/sprites.c \
 	src/moves.c \
 	src/exit_game.c \
-	# src/error.c \
+	src/hud.c \
 
 # Object files in build/
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)

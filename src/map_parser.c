@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 11:27:08 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/01 12:38:57 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 17:17:32 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	validate_map(char **map, t_game *game)
 
 void	validate_dimensions(char **map)
 {
-	int i;
-	int width;
+	int	i;
+	int	width;
 
 	if (!map || !map[0])
 		exit_with_error("Map is empty");
@@ -39,8 +39,8 @@ void	validate_dimensions(char **map)
 
 bool	has_ber_extension(char *filename)
 {
-	int len;
-	
+	int	len;
+
 	len = ft_strlen(filename);
 	if (len < 4)
 		return (false);
@@ -49,32 +49,40 @@ bool	has_ber_extension(char *filename)
 	return (false);
 }
 
-char **read_map_file(char *file_path)
+static char	*read_full_map(int fd)
 {
-	int		fd;
 	char	*line;
 	char	*full_map;
 	char	*temp;
-	char	**map;
 
-	fd = open(file_path, O_RDONLY);
-	if (fd < 0)
-		exit_with_error("Could not open map file");
 	full_map = NULL;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		temp = full_map;
 		full_map = ft_strjoin(full_map, line);
 		if (temp)
 			free(temp);
 		free(line);
+		line = get_next_line(fd);
 	}
+	return (full_map);
+}
+
+char	**read_map_file(char *file_path)
+{
+	int		fd;
+	char	*full_map;
+	char	**map;
+
+	fd = open(file_path, O_RDONLY);
+	if (fd < 0)
+		exit_with_error("Could not open map file");
+	full_map = read_full_map(fd);
 	close(fd);
 	if (!full_map || full_map[0] == '\0')
 		exit_with_error("Map is empty");
-
 	map = ft_split(full_map, '\n');
 	free(full_map);
 	return (map);
 }
-

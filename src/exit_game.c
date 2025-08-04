@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:53:38 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/01 12:43:52 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 16:59:26 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,10 @@ void	exit_game(t_game *game)
 		free_map(game->map);
 	ft_printf("Game closed. Total moves: %d\n", game->moves);
 	exit(0);
+}
+
+int	exit_hook(void *param)
+{
+	exit_game((t_game *)param);
+	return (0);
 }

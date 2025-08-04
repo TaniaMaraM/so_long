@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:17:26 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/28 15:47:40 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 17:53:28 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
 
 int		ft_find_newline(const char *str);
 char	*ft_extract_line(char *keep);

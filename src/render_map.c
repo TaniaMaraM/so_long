@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 14:49:14 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/01 14:11:45 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 17:09:43 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,23 @@ static void	render_tile(t_game *game, char tile, int x, int y)
 			game->sprites.player, x * TILE_SIZE, y * TILE_SIZE);
 }
 
+static void	render_enemies(t_game *game)
+{
+	int	i;
+	int	ex;
+	int	ey;
+
+	i = 0;
+	while (i < game->num_enemies)
+	{
+		ex = game->enemies[i].x * TILE_SIZE;
+		ey = game->enemies[i].y * TILE_SIZE;
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->sprites.enemy, ex, ey);
+		i++;
+	}
+}
+
 void	render_map(t_game *game)
 {
 	int	y;
@@ -58,20 +75,5 @@ void	render_map(t_game *game)
 		}
 		y++;
 	}
-	int i = 0;
-	while (i < game->num_enemies)
-	{
-		int ex = game->enemies[i].x * TILE_SIZE;
-		int ey = game->enemies[i].y * TILE_SIZE;
-		mlx_put_image_to_window(game->mlx, game->win, game->sprites.enemy, ex, ey);
-		i++;
-	}
-}
-
-void	draw_hud(t_game *game)
-{
-	char	buffer[32];
-
-	ft_printf(buffer, "Moves: %d", game->moves);
-	mlx_string_put(game->mlx, game->win, 10, 20, 0xFFFFFF, buffer);
+	render_enemies(game);
 }

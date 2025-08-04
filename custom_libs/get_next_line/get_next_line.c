@@ -6,18 +6,17 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:17:22 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/07/28 15:45:57 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/01 17:53:01 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "libft.h"
 
-
 int	ft_find_newline(const char *str)
 {
-	int i;
-	
+	int	i;
+
 	if (!str)
 		return (-1);
 	i = 0;
@@ -30,10 +29,10 @@ int	ft_find_newline(const char *str)
 	return (-1);
 }
 
-char    *ft_extract_line(char *keep)
+char	*ft_extract_line(char *keep)
 {
-	char    *line;
-	int     newline_index;
+	char	*line;
+	int		newline_index;
 
 	if (!keep)
 		return (NULL);
@@ -44,10 +43,11 @@ char    *ft_extract_line(char *keep)
 	return (line);
 }
 
-char    *ft_update_keep(char *keep)
+char	*ft_update_keep(char *keep)
 {
-	char    *new_keep;
-	int     newline_index;
+	char	*new_keep;
+	int		newline_index;
+	int		len;
 
 	if (!keep)
 		return (NULL);
@@ -57,7 +57,8 @@ char    *ft_update_keep(char *keep)
 		free(keep);
 		return (NULL);
 	}
-	new_keep = ft_substr(keep, newline_index + 1, ft_strlen(keep) - (newline_index + 1));
+	len = ft_strlen(keep) - (newline_index + 1);
+	new_keep = ft_substr(keep, newline_index + 1, len);
 	if (!new_keep)
 	{
 		free(keep);
