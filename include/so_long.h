@@ -90,6 +90,7 @@ void	flood_fill(char **map, int y, int x);
 void	validate_path(char **map);
 int		count_chars(char **map, char c);
 // game
+void	start_game(t_game *game, char *filepath);
 void	init_game(t_game *game, char **map);
 void	extract_map_data(t_game *game);
 void	init_mlx(t_game *game);
