@@ -6,12 +6,20 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:40 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/01 17:44:36 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 14:46:30 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+// void	exit_with_error(char *msg, t_game *game)
+// {
+// 	ft_printf("Error\n");
+// 	ft_printf("%s\n", msg);
+// 	if (game)
+// 		exit_game(game);
+// 	exit(EXIT_FAILURE);
+// }
 void	exit_with_error(char *msg)
 {
 	ft_printf("Error\n");
@@ -62,3 +70,4 @@ int	count_chars(char **map, char c)
 	}
 	return (count);
 }
+

@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:53:38 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 14:14:32 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 14:24:24 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	exit_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->sprites.collectible);
 	if (game->sprites.exit)
 		mlx_destroy_image(game->mlx, game->sprites.exit);
+	if (game->sprites.enemy)
+		mlx_destroy_image(game->mlx, game->sprites.enemy);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
