@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 14:36:05 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 15:53:01 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 16:54:47 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ void	start_game(t_game *game, char *filepath)
 {
 	char	**map;
 
+	ft_bzero(game, sizeof(t_game));
 	// Reads the .ber map file and stores it as a 2D char array.
 	map = read_map_file(filepath);
+	game->map = map;
 	// Validates map rules (dimensions, characters, walls, paths...).
-	validate_map(map, game);
+	//validate_map(map, game); //tentando achar os memory leaks
+	validate_map(game->map, game);
 	// Initializes game struct with player, collectibles, enemies, etc.
 	init_game(game, map);
 	// Initializes the MiniLibX graphics window and engine.

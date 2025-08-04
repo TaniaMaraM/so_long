@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 17:55:45 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 16:30:25 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 16:53:33 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,13 @@ void	free_map(char **map);
 char	**read_map_file(char *file_path);
 void	print_map(char **map); // debug
 void	validate_map(char **map, t_game *game);
-void	validate_dimensions(char **map);
+//void	validate_dimensions(char **map);
+void	validate_dimensions(char **map, t_game *game);
 void	validate_characters(char **map, t_game *game);
-void	validate_elements(char **map);
-void	validate_walls(char **map);
+// void	validate_elements(char **map);
+// void	validate_walls(char **map);
+void	validate_elements(char **map, t_game *game);
+void	validate_walls(char **map, t_game *game);
 char	**duplicate_map(char **map);
 void	find_player(char **map, int *x, int *y);
 void	flood_fill(char **map, int y, int x);

@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:30 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 15:57:14 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 16:57:32 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	validate_characters(char **map, t_game *game)
 }
 
 // Valida se o mapa contém exatamente 1 P, 1 E, e pelo menos 1 C
-void	validate_elements(char **map)
+void	validate_elements(char **map,  t_game *game)
 {
 	int	player_count;
 	int	exit_count;
@@ -86,15 +86,15 @@ void	validate_elements(char **map)
 	collectible_count = 0;
 	count_elements(map, &player_count, &exit_count, &collectible_count);
 	if (player_count != 1)
-		exit_with_error("Map must contain exactly one player", NULL);
+		exit_with_error("Map must contain exactly one player", game);
 	if (exit_count != 1)
-		exit_with_error("Map must contain exactly one exit", NULL);
+		exit_with_error("Map must contain exactly one exit", game);
 	if (collectible_count < 1)
-		exit_with_error("Map must contain at least one collectible", NULL);
+		exit_with_error("Map must contain at least one collectible", game);
 }
 
 // Garante que o mapa está completamente cercado por paredes
-void	validate_walls(char **map)
+void	validate_walls(char **map,  t_game *game)
 {
 	int	width;
 	int	height;
@@ -108,14 +108,14 @@ void	validate_walls(char **map)
 	while (i < width)
 	{
 		if (map[0][i] != '1' || map[height - 1][i] != '1')
-			exit_with_error("Map is not enclosed by walls", NULL);
+			exit_with_error("Map is not enclosed by walls", game);
 		i++;
 	}
 	i = 0;
 	while (i < height)
 	{
 		if (map[i][0] != '1' || map[i][width - 1] != '1')
-			exit_with_error("Map is not enclosed by walls", NULL);
+			exit_with_error("Map is not enclosed by walls", game);
 		i++;
 	}
 }
