@@ -103,4 +103,14 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+# Docker commands
+valgrind:
+	@echo "$(GREEN)[Running]$(RESET) Valgrind check in Docker"
+	@docker build -t so_long_valgrind .
+	@docker run --rm so_long_valgrind
+
+docker-clean:
+	@echo "$(RED)[Docker]$(RESET) Removing Docker image"
+	@docker rmi so_long_valgrind 2>/dev/null || true
+
+.PHONY: all clean fclean re valgrind docker-clean
