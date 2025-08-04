@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:53:38 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 17:39:16 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 19:53:42 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,8 @@ void	exit_game(t_game *game)
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
-	{
-		mlx_destroy_display(game->mlx); //testing leaks
+		//mlx_destroy_display(game->mlx); //testing leaks
 		free(game->mlx);
-	}
 	if (game->map)
 		free_map(game->map);
 	ft_printf("Game closed. Total moves: %d\n", game->moves);

@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 11:27:08 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 16:56:26 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/04 19:46:57 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	**read_map_file(char *file_path)
 		exit_with_error("Could not open map file", NULL);
 	full_map = read_full_map(fd);
 	close(fd);
-	get_next_line(-1); //tentando arrumar os leaks
+	// get_next_line(-1); //tentando arrumar os leaks
 	if (!full_map || full_map[0] == '\0')
 		exit_with_error("Map is empty", NULL);
 	map = ft_split(full_map, '\n');
