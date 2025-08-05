@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:30 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 16:57:32 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/05 14:16:58 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	validate_characters(char **map, t_game *game)
 }
 
 // Valida se o mapa contém exatamente 1 P, 1 E, e pelo menos 1 C
-void	validate_elements(char **map,  t_game *game)
+void	validate_elements(char **map, t_game *game)
 {
 	int	player_count;
 	int	exit_count;
@@ -94,7 +94,7 @@ void	validate_elements(char **map,  t_game *game)
 }
 
 // Garante que o mapa está completamente cercado por paredes
-void	validate_walls(char **map,  t_game *game)
+void	validate_walls(char **map, t_game *game)
 {
 	int	width;
 	int	height;

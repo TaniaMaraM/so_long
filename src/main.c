@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 14:36:05 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 16:54:47 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/05 14:16:06 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 /*
  * Initializes and runs the game loop from the provided map file.
- * It loads and validates the map, sets up the game state and starts the graphical window.
+ * It loads and validates the map, sets up the game state and
+ * starts the graphical window.
  */
 void	start_game(t_game *game, char *filepath)
 {
@@ -48,6 +49,7 @@ void	start_game(t_game *game, char *filepath)
 int	main(int argc, char **argv)
 {
 	t_game	game;
+
 	if (argc != 2)
 		exit_with_error("Usage: ./so_long map.ber", NULL);
 	// Ensure the map file has the .ber extension.

@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:53:38 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 22:08:36 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/05 14:15:24 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	exit_game(t_game *game)
 	if (game->sprites.enemy)
 		mlx_destroy_image(game->mlx, game->sprites.enemy);
 	if (game->sprites.move_counter) //testing leaks
-		mlx_destroy_image(game->mlx, game->sprites.move_counter); //testing leaks
+		mlx_destroy_image(game->mlx, game->sprites.move_counter);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)

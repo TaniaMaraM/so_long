@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:36:50 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 15:55:15 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/05 14:13:30 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	validate_path(char **map)
 
 	copy = duplicate_map(map);
 	if (!copy)
-		exit_with_error("Memory allocation failed during path validation", NULL);
+		exit_with_error("Memory allocation failed", NULL);
 	find_player(copy, &x, &y);
 	flood_fill(copy, y, x);
 	check_reachable(copy);
