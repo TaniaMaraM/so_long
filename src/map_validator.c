@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:30 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/05 16:59:01 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/05 17:50:59 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,35 @@ void	validate_characters(char **map, t_game *game)
 		}
 		i++;
 	}
+}
+
+/**
+ * count_chars - Counts how many times a specific character appears in the map.
+ * @map: 2D map array (char **)
+ * @c: Character to count
+ * 
+ * Returns the number of times the character `c` appears in the map.
+ */
+int	count_chars(char **map, char c)
+{
+	int	count;
+	int	i;
+	int	j;
+
+	count = 0;
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == c)
+				count++;
+			j++;
+		}
+		i++;
+	}
+	return (count);
 }
 
 // Valida se o mapa contém exatamente 1 P, 1 E, e pelo menos 1 C
