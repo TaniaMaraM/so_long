@@ -6,35 +6,11 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:30 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/05 14:16:58 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/05 16:59:01 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-// Percorre o mapa e conta quantos 'P', 'E' e 'C' existem
-static void	count_elements(char **map, int *p, int *e, int *c)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == 'P')
-				(*p)++;
-			else if (map[i][j] == 'E')
-				(*e)++;
-			else if (map[i][j] == 'C')
-				(*c)++;
-			j++;
-		}
-		i++;
-	}
-}
 
 // Adiciona um inimigo à struct game se o limite não foi atingido
 void	store_enemy(t_game *game, int x, int y)
@@ -81,10 +57,9 @@ void	validate_elements(char **map, t_game *game)
 	int	exit_count;
 	int	collectible_count;
 
-	player_count = 0;
-	exit_count = 0;
-	collectible_count = 0;
-	count_elements(map, &player_count, &exit_count, &collectible_count);
+	player_count = count_chars(map, 'P');
+	exit_count = count_chars(map, 'E');
+	collectible_count = count_chars(map, 'C');
 	if (player_count != 1)
 		exit_with_error("Map must contain exactly one player", game);
 	if (exit_count != 1)

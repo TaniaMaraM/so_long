@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 11:27:08 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 19:46:57 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/05 17:01:39 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	validate_map(char **map, t_game *game)
 	validate_characters(map, game);
 	validate_elements(map, game);
 	validate_walls(map, game);
+	validate_path(map); //added
 }
 
 void	validate_dimensions(char **map, t_game *game)
