@@ -6,21 +6,11 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 21:30:01 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 16:40:04 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/06 12:19:32 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-/**
- * @file init_game.c
- * @brief Initializes the main game structure 
- * and extracts essential data from the map.
- * 
- * This file contains functions responsible for:
- * - setting default values for the t_game structure
- * - extracting player position and map dimensions from the parsed map
- */
 
 void	init_game(t_game *game, char **map)
 {

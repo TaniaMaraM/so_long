@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 14:36:05 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/05 14:16:06 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/06 16:38:52 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,3 @@ int	main(int argc, char **argv)
 	start_game(&game, argv[1]);
 	return (0);
 }
-/* 
-int	main(int argc, char **argv)
-{
-	t_game	game;
-	char	**map;
-
-	if (argc != 2)
-		exit_with_error("Usage: ./so_long map.ber", NULL);
-	if (!has_ber_extension(argv[1]))
-		exit_with_error("Invalid file extension. Must be .ber", NULL);
-	map = read_map_file(argv[1]);
-	validate_map(map, &game);
-	init_game(&game, map);
-	init_mlx(&game);
-	load_sprites(&game);
-	render_map(&game);
-	mlx_loop(game.mlx);
-	free_map(game.map);
-	return (0);
-} */

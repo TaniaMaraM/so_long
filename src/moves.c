@@ -6,16 +6,11 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 14:50:27 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/01 16:47:57 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/07 11:14:13 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-/**
- * @file moves.c
- * @brief Handles player movement and input via keyboard.
- */
 
 static bool	check_enemy_collision(t_game *game, int new_x, int new_y)
 {

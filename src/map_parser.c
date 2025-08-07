@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 11:27:08 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/05 17:01:39 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/06 17:09:05 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	validate_map(char **map, t_game *game)
 	validate_characters(map, game);
 	validate_elements(map, game);
 	validate_walls(map, game);
-	validate_path(map); //added
+	validate_path(map);
 }
 
 void	validate_dimensions(char **map, t_game *game)
@@ -81,7 +81,6 @@ char	**read_map_file(char *file_path)
 		exit_with_error("Could not open map file", NULL);
 	full_map = read_full_map(fd);
 	close(fd);
-	// get_next_line(-1); //tentando arrumar os leaks
 	if (!full_map || full_map[0] == '\0')
 		exit_with_error("Map is empty", NULL);
 	map = ft_split(full_map, '\n');

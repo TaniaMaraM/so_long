@@ -6,13 +6,12 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:49:30 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/05 17:50:59 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/06 18:40:17 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// Adiciona um inimigo à struct game se o limite não foi atingido
 void	store_enemy(t_game *game, int x, int y)
 {
 	if (game->num_enemies < MAX_ENEMIES)
@@ -25,7 +24,6 @@ void	store_enemy(t_game *game, int x, int y)
 		exit_with_error("Too many enemies on map", game);
 }
 
-//garante que o mapa só contém caracteres válidos e armazena inimigos
 void	validate_characters(char **map, t_game *game)
 {
 	int	i;
@@ -50,13 +48,6 @@ void	validate_characters(char **map, t_game *game)
 	}
 }
 
-/**
- * count_chars - Counts how many times a specific character appears in the map.
- * @map: 2D map array (char **)
- * @c: Character to count
- * 
- * Returns the number of times the character `c` appears in the map.
- */
 int	count_chars(char **map, char c)
 {
 	int	count;
@@ -79,7 +70,6 @@ int	count_chars(char **map, char c)
 	return (count);
 }
 
-// Valida se o mapa contém exatamente 1 P, 1 E, e pelo menos 1 C
 void	validate_elements(char **map, t_game *game)
 {
 	int	player_count;
@@ -97,7 +87,6 @@ void	validate_elements(char **map, t_game *game)
 		exit_with_error("Map must contain at least one collectible", game);
 }
 
-// Garante que o mapa está completamente cercado por paredes
 void	validate_walls(char **map, t_game *game)
 {
 	int	width;

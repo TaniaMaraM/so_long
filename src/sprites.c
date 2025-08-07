@@ -6,17 +6,9 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 14:49:16 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 15:58:13 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/06 22:09:45 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/**
- * @file sprites.c
- * @brief Loads all required game sprites using MiniLibX.
- *
- * This file contains functions to load .xpm files into image pointers
- * and store them in the game struct for later use in rendering.
- */
 
 #include "../include/so_long.h"
 
