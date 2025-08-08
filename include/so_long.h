@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 17:55:45 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/08 16:05:16 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/08 17:01:18 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@
 #  define KEY_ESC 53
 # else
 // Linux keycodes (ASCII-based)
-#  define KEY_W 'w'
-#  define KEY_A 'a'
-#  define KEY_S 's'
-#  define KEY_D 'd'
+#  define KEY_W 119
+#  define KEY_A 97
+#  define KEY_S 115
+#  define KEY_D 100
 #  define KEY_ESC 65307
 # endif
 
