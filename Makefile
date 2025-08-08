@@ -73,7 +73,7 @@ $(NAME): $(LIBFT) $(GNL) $(MLX_DIR)/libmlx.a $(OBJS)
 # Build MiniLibX if not already built
 $(MLX_DIR)/libmlx.a:
 	@echo "$(GREEN)[Building]$(RESET) MiniLibX"
-	@$(MAKE) -C $(MLX_DIR) CC="$(CC) -DGL_SILENCE_DEPRECATION
+	@$(MAKE) -C $(MLX_DIR) CC="$(CC) -DGL_SILENCE_DEPRECATION"
 
 # Compile each object file
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c

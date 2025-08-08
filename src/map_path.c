@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:36:50 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/06 22:06:03 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/08 16:37:04 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	validate_path(char **map)
 	flood_fill(copy, y, x);
 	check_reachable(copy);
 	free_map(copy);
+	//free_map(map); //testing valgrind
 }
 
 char	**duplicate_map(char **map)
@@ -103,6 +104,11 @@ void	find_player(char **map, int *x, int *y)
 
 void	flood_fill(char **map, int y, int x)
 {
+	if (map[y][x] == 'E')
+	{
+			map[y][x] = '1';
+			return ;
+	}
 	if (map[y][x] == '1' || map[y][x] == 'V')
 		return ;
 	if (map[y][x] == '0'
