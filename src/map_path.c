@@ -6,13 +6,13 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:36:50 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/08 16:37:04 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/08 16:52:06 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void	check_reachable(char **map)
+int	check_reachable(char **map)
 {
 	int	i;
 	int	j;
@@ -26,12 +26,13 @@ static void	check_reachable(char **map)
 			if (map[i][j] == 'C' || map[i][j] == 'E')
 			{
 				free_map(map);
-				exit_with_error("Map has unreachable elements", NULL);
+				return (1);
 			}
 			j++;
 		}
 		i++;
 	}
+	return (0);
 }
 
 void	validate_path(char **map)
@@ -45,9 +46,12 @@ void	validate_path(char **map)
 		exit_with_error("Memory allocation failed", NULL);
 	find_player(copy, &x, &y);
 	flood_fill(copy, y, x);
-	check_reachable(copy);
+	if (check_reachable(copy) == 1)
+	{
+		free_map(map);
+		exit_with_error("Map has unreachable elements", NULL);
+	}
 	free_map(copy);
-	//free_map(map); //testing valgrind
 }
 
 char	**duplicate_map(char **map)
@@ -106,8 +110,8 @@ void	flood_fill(char **map, int y, int x)
 {
 	if (map[y][x] == 'E')
 	{
-			map[y][x] = '1';
-			return ;
+		map[y][x] = '1';
+		return ;
 	}
 	if (map[y][x] == '1' || map[y][x] == 'V')
 		return ;
