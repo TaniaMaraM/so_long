@@ -6,17 +6,11 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:53:38 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 14:24:24 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/08 15:51:10 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-/**
- * @file exit_game.c
- * @brief Handles clean exit of the game when ESC 
- * is pressed or window is closed.
- */
 
 void	exit_game(t_game *game)
 {
@@ -32,10 +26,13 @@ void	exit_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->sprites.exit);
 	if (game->sprites.enemy)
 		mlx_destroy_image(game->mlx, game->sprites.enemy);
+	if (game->sprites.move_counter)
+		mlx_destroy_image(game->mlx, game->sprites.move_counter);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
-		free(game->mlx);
+		mlx_destroy_display(game->mlx);
+	free(game->mlx);
 	if (game->map)
 		free_map(game->map);
 	ft_printf("Game closed. Total moves: %d\n", game->moves);

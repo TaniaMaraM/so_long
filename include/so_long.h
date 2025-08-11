@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 17:55:45 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/04 14:46:49 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/08 16:05:16 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,20 @@ typedef struct s_game
 	int		num_enemies;
 }	t_game;
 
-// maps
 bool	has_ber_extension(char *filename);
-void	exit_with_error(char *msg);
-char	**read_map_file(char *file_path);
-void	print_map(char **map); // debug
+void	exit_with_error(char *msg, t_game *game);
 void	free_map(char **map);
+char	**read_map_file(char *file_path);
 void	validate_map(char **map, t_game *game);
-void	validate_dimensions(char **map);
+void	validate_dimensions(char **map, t_game *game);
 void	validate_characters(char **map, t_game *game);
-void	validate_elements(char **map);
-void	validate_walls(char **map);
+void	validate_elements(char **map, t_game *game);
+void	validate_walls(char **map, t_game *game);
 char	**duplicate_map(char **map);
 void	find_player(char **map, int *x, int *y);
 void	flood_fill(char **map, int y, int x);
 void	validate_path(char **map);
 int		count_chars(char **map, char c);
-// game
 void	start_game(t_game *game, char *filepath);
 void	init_game(t_game *game, char **map);
 void	extract_map_data(t_game *game);

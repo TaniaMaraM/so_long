@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_setup.c                                        :+:      :+:    :+:   */
+/*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 15:32:02 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/01 12:45:02 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/06 21:46:20 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	init_mlx(t_game *game)
 
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		exit_with_error("Failed to initialize MLX.");
+		exit_with_error("Failed to initialize MLX.", game);
 	win_width = game->width * TILE_SIZE;
 	win_height = game->height * TILE_SIZE;
 	game->win = mlx_new_window(game->mlx, win_width, win_height, "so_long");
 	if (!game->win)
-		exit_with_error("Failed to create game window.");
+		exit_with_error("Failed to create game window.", game);
 	mlx_key_hook(game->win, handle_input, game);
 	mlx_hook(game->win, 17, 0, exit_hook, game);
 }
