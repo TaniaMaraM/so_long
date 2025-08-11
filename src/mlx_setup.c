@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mlx.c                                         :+:      :+:    :+:   */
+/*   mlx_setup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 15:32:02 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/06 21:46:20 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/11 22:00:03 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-/**
- * @file mlx_setup.c
- * @brief Initializes the MLX context and opens a new game window.
- *
- * This file sets up the MiniLibX instance 
- * and the game window using the map dimensions.
- */
 
 void	init_mlx(t_game *game)
 {

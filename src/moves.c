@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 14:50:27 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/07 11:14:13 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/11 22:00:11 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,22 +91,3 @@ int	handle_input(int keycode, t_game *game)
 		move_player(game, 1, 0);
 	return (0);
 }
-
-/* 
-COM OS DEFINE EH PRA FUNCIONAR NO LINUX
-pra funcionar no lINUX - testar na escola
-int	handle_input(int keycode, t_game *game)
-{
-	ft_printf("KEY PRESSED: %d\n", keycode); //debug
-	if (keycode == 65307 || keycode == 53) // ESC (Linux or Mac)
-		exit_game(game);
-	else if (keycode == 'w' || keycode == 119)
-		move_player(game, 0, -1);
-	else if (keycode == 's' || keycode == 115)
-		move_player(game, 0, 1);
-	else if (keycode == 'a' || keycode == 97)
-		move_player(game, -1, 0);
-	else if (keycode == 'd' || keycode == 100)
-		move_player(game, 1, 0);
-	return (0);
-} */

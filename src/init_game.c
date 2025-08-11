@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 21:30:01 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/06 12:19:32 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/11 22:01:01 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,16 @@ void	extract_map_data(t_game *game)
 	}
 	if (x > game->width)
 		game->width = x;
+}
+
+void	store_enemy(t_game *game, int x, int y)
+{
+	if (game->num_enemies < MAX_ENEMIES)
+	{
+		game->enemies[game->num_enemies].x = x;
+		game->enemies[game->num_enemies].y = y;
+		game->num_enemies++;
+	}
+	else
+		exit_with_error("Too many enemies on map", game);
 }
