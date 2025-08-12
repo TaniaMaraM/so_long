@@ -48,6 +48,7 @@ Maps must follow these rules:
 
 Example of a valid map:
 
+<pre>
 |--------|
 | 111111 |
 | 1P0C01 |
@@ -55,6 +56,7 @@ Example of a valid map:
 | 1C0E01 |
 | 111111 |
 |--------|
+</pre>
 
 
 **Validation rules:**
