@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:53:38 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/08 15:51:10 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/12 15:19:46 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ void	exit_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->sprites.move_counter);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
+	/* mlx_destroy_display function is only available on Linux 
+	builds of MiniLibX. Mandatory use to not have leaks.
 	if (game->mlx)
-		mlx_destroy_display(game->mlx);
-	free(game->mlx);
+		mlx_destroy_display(game->mlx); 
+	*/ 
 	if (game->map)
 		free_map(game->map);
 	ft_printf("Game closed. Total moves: %d\n", game->moves);

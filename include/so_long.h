@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 17:55:45 by tmarcos           #+#    #+#             */
-/*   Updated: 2025/08/08 17:01:18 by tmarcos          ###   ########.fr       */
+/*   Updated: 2025/08/12 15:14:57 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@
 # include <stdbool.h>
 # include "../custom_libs/libft/libft.h"
 # include "../custom_libs/get_next_line/get_next_line.h"
-# include "../lib/minilibx/mlx.h"
+
+# ifdef __APPLE__
+#  include "../lib/mlx_mac/mlx.h"
+# else
+#  include "../lib/mlx_linux/mlx.h"
+# endif
 
 # define TILE_SIZE 64
 # define MAX_ENEMIES 5

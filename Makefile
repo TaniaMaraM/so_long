@@ -9,7 +9,10 @@ CHECK = \033[0;34m✔\033[0m
 
 # Compiler
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -DGL_SILENCE_DEPRECATION
+CFLAGS = -Wall -Wextra -Werror
+
+# Detect OS
+OS := $(shell uname)
 
 # Directories
 SRC_DIR = src
@@ -24,18 +27,22 @@ GNL_DIR = $(CUSTOM_LIBS_DIR)/get_next_line
 LIBFT = $(LIBFT_DIR)/libft.a
 GNL   = $(GNL_DIR)/libgnl.a
 
-# MiniLibX
-MLX_DIR = lib/minilibx
-OS := $(shell uname)
+# MiniLibX (seleciona automaticamente a certa)
+MLX_DIR_MAC   = lib/mlx_mac
+MLX_DIR_LINUX = lib/mlx_linux
 
-# System-specific MLX flags
 ifeq ($(OS), Darwin)  # macOS
-MLX_INC = -I$(MLX_DIR)
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+	MLX_DIR   = $(MLX_DIR_MAC)
+	MLX_INC   = -I$(MLX_DIR)
+	MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+	CFLAGS   += -DGL_SILENCE_DEPRECATION
 else  # Linux
-MLX_INC = -I$(MLX_DIR)
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+	MLX_DIR   = $(MLX_DIR_LINUX)
+	MLX_INC   = -I$(MLX_DIR)
+	MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 endif
+
+MLX_LIB := $(MLX_DIR)/libmlx.a
 
 # Include paths (for compilation only)
 INCLUDES = -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR) $(MLX_INC)
@@ -65,15 +72,15 @@ $(BUILD_DIR):
 	@mkdir -p $(BUILD_DIR)
 
 # Link final
-$(NAME): $(LIBFT) $(GNL) $(MLX_DIR)/libmlx.a $(OBJS)
+$(NAME): $(LIBFT) $(GNL) $(MLX_LIB) $(OBJS)
 	@echo "$(GREEN)[Linking]$(RESET) $(NAME)"
 	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) $(GNL) $(LIBFT) -o $(NAME)
 	@echo "$(CHECK) Executable built successfully ✅"
 
-# Build MiniLibX if not already built
-$(MLX_DIR)/libmlx.a:
-	@echo "$(GREEN)[Building]$(RESET) MiniLibX"
-	@$(MAKE) -C $(MLX_DIR) CC="$(CC) -DGL_SILENCE_DEPRECATION"
+# Build MiniLibX (para o OS detectado)
+$(MLX_LIB):
+	@echo "$(GREEN)[Building]$(RESET) MiniLibX for $(OS) in $(MLX_DIR)"
+	@$(MAKE) -C $(MLX_DIR)
 
 # Compile each object file
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
