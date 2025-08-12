@@ -5,6 +5,11 @@
   <img src="gif/game.gif" alt="so_long gameplay" width="500"/>
 </p>
 
+
+[![Language](https://img.shields.io/badge/lang-C-blue)]()
+[![42 Norm](https://img.shields.io/badge/42-Norminette-2ea44f)]()
+[![Build](https://img.shields.io/badge/build-make-brightgreen)]()
+
 **so_long** is a small 2D game developed as part of the 42 school curriculum.  
 The objective is simple: **collect all collectibles on the map and then reach the exit**.  
 The project focuses on working with the MiniLibX graphics library, event handling, textures, sprites, and clean C programming following the Norminette rules.
