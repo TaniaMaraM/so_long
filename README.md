@@ -112,8 +112,30 @@ so_long/
 
 ### **Requirements**
 - **Linux** or **macOS**
-- **MiniLibX** (included in `lib/MLX42`)
+- **MiniLibX** (included in `lib/`)
 - **gcc** or **cc** compiler
+
+### **MLX42 Library**
+
+This project includes two versions of the MLX42 library:
+- **Linux:** `lib/mlx_linux`
+- **macOS:** `lib/mlx_mac`
+
+The Makefile automatically detects your OS and builds the correct version.
+
+#### **Linux dependencies**
+Before compiling on Linux, you must install GLFW and X11 development libraries:
+```bash
+sudo apt-get update
+sudo apt-get install cmake gcc make libx11-dev libglfw3-dev libglfw3 xorg-dev
+```
+
+#### **macOS dependencies**
+On macOS, make sure you have Xcode Command Line Tools and install GLFW via Homebrew:
+```bash
+xcode-select --install
+brew install glfw
+```
 
 ### **Build the project**
 ```bash
