@@ -81,9 +81,6 @@ Example of a valid map:
 
 ## 📂 Project Structure
 
-## 📂 Project Structure
-## 📂 Project Structure
-
 <pre>
 so_long/
 ├── <a href="include">include</a>                  # Header file
