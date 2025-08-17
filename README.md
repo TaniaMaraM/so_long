@@ -148,4 +148,4 @@ make
 
 ### **Run the game**
 
-./so_long maps/valid.ber
+./so_long maps/map_valid.ber
